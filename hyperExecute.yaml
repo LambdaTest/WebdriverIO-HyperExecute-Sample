@@ -1,0 +1,18 @@
+version: 0.1
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+runson: win
+autosplit: true
+concurrency: 2
+tunnel: false
+pre:
+  - npm install
+cacheKey: '{{ checksum "package-lock.json" }}'
+cacheDirectories:
+  - .node_modules
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: grep -lr 'describe' tests/specs/*.js
+testRunnerCommand: npx wdio conf\wdio.conf.js --spec tests\specs\demo.js
