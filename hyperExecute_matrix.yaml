@@ -1,0 +1,16 @@
+version: 0.1
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+runson: win
+tunnel: false
+pre:
+  - npm install
+cacheKey: '{{ checksum "package-lock.json" }}'
+cacheDirectories:
+  - node_modules
+matrix: 
+   Specs: ["tests/specs/demo.js", "tests/specs/googleSearch.js", "tests/specs/single_test.js" ]
+    
+testSuites: 
+    - npx wdio conf\wdio.conf.js --spec $Specs
