@@ -1,4 +1,4 @@
-const browser = (process.argv[5] || 'Chrome');
+const browser = 'Chrome';
 exports.config = {
   services: [
     [
@@ -14,13 +14,12 @@ exports.config = {
   user: process.env.LT_USERNAME,
   key: process.env.LT_ACCESS_KEY,
   buildName: process.env.LT_BUILD_NAME,
-  specs: ["./tests/specs/single_test.js"],
   exclude: [],
 
   capabilities: [
     {
       "LT:Options": {
-      browserName: browser,
+      browserName:  browser,
       version: "latest",
       name: "Test WebdriverIO",
       build: "WebDriver Selenium Sample",

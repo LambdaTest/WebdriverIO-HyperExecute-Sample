@@ -4,7 +4,6 @@ it ('Google Search',()=>{
     
     for( var i=0; i<600; i++){
         browser.getTitle()
-        browser.getTitle()
     }
     const searchBOx= $('/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input');
     searchBOx.click();
