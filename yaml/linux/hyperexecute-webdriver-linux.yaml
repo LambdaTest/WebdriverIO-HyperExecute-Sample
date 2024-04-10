@@ -1,0 +1,33 @@
+version: 0.1
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+
+runson: linux
+
+autosplit: true
+
+concurrency: 2
+
+tunnel: false
+
+pre:
+  - npm install
+
+runtime:                    
+  language: node
+  version: "18"        
+
+cacheKey: '{{ checksum "package-lock.json" }}'
+
+cacheDirectories:
+  - node_modules
+
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: grep -lr 'describe' tests/specs/*.js
+
+testRunnerCommand: npx wdio conf/wdio.conf.js --spec $test
+
+jobLabel: ['wdio', 'selenium', 'linux', 'autosplit']
