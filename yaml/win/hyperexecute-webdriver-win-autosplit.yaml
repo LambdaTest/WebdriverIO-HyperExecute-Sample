@@ -3,7 +3,7 @@ globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
 
-runson: win
+runson: win11
 
 autosplit: true
 
@@ -12,10 +12,7 @@ concurrency: 2
 tunnel: false
 
 pre:
-  - npm install -g npm@10.2.4
-  - npm install
-  - npm i axios
-  - node -v
+  - npm install   
 
 cacheKey: '{{ checksum "package-lock.json" }}'
 
@@ -27,6 +24,6 @@ testDiscovery:
   mode: dynamic
   command: grep -lr 'describe' tests/specs/*.js
 
-testRunnerCommand: npx wdio conf\wdio.conf.js --spec $test
+testRunnerCommand: npx wdio conf/wdio.conf.js --spec $test
 
-jobLabel: ['wdio', 'selenium', 'autosplit']
+jobLabel: ['wdio', 'selenium', 'win', 'autosplit']
